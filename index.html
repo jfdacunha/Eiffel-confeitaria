@@ -82,11 +82,12 @@ tailwind.config = {
       <a href="#menu" class="hover:text-gold transition-colors">Menu</a>
       <a href="#sobre" class="hover:text-gold transition-colors">Sobre Nós</a>
       <a href="#experiencia" class="hover:text-gold transition-colors">Experiência</a>
-      <a href="#reservar" class="hover:text-gold transition-colors">Reservar</a>
+      <a href="#reservar" class="hover:text-gold transition-colors">Como Chegar</a>
+      <a href="#faq" class="hover:text-gold transition-colors">FAQ</a>
       <a href="#contactos" class="hover:text-gold transition-colors">Contactos</a>
     </div>
-    <a href="#reservar" class="border border-gold text-gold px-5 py-2.5 text-xs uppercase letterspace hover:bg-gold hover:text-noir transition-all duration-300">
-      Ver Menu / Reservar
+    <a href="#menu" class="border border-gold text-gold px-5 py-2.5 text-xs uppercase letterspace hover:bg-gold hover:text-noir transition-all duration-300">
+      Ver Menu
     </a>
   </nav>
 </header>
@@ -109,7 +110,7 @@ tailwind.config = {
     </p>
     <div class="fade-up flex flex-wrap gap-4 mt-10">
       <a href="#menu" class="bg-gold text-noir px-8 py-3.5 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">Ver Menu Completo</a>
-      <a href="#reservar" class="border border-cream/40 text-cream px-8 py-3.5 text-xs uppercase letterspace hover:border-gold hover:text-gold transition-colors">Simular Pedido</a>
+      <a href="#reservar" class="border border-cream/40 text-cream px-8 py-3.5 text-xs uppercase letterspace hover:border-gold hover:text-gold transition-colors">Como Chegar</a>
     </div>
   </div>
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-cream/50 z-10">
@@ -297,61 +298,119 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- SIMULADOR -->
+<!-- COMO CHEGAR -->
 <section id="reservar" class="py-28 px-6 md:px-10 bg-noir">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-16 fade-up">
-      <p class="gold-text text-xs letterspace uppercase mb-4">Simulador Interativo</p>
-      <h2 class="font-display text-3xl md:text-5xl">Monte o Seu Lanche</h2>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16 fade-up">
+      <p class="gold-text text-xs letterspace uppercase mb-4">Onde Estamos</p>
+      <h2 class="font-display text-3xl md:text-5xl">Venha Visitar-nos em Carnaxide</h2>
       <div class="gold-line w-24 mx-auto mt-6"></div>
-      <p class="text-cream/60 mt-6">Escolha um crepe e uma bebida e veja o valor estimado antes de reservar mesa ou encomendar para take away.</p>
     </div>
 
-    <div class="fade-up border border-gold/25 p-8 md:p-12 grid md:grid-cols-2 gap-12">
-      <div>
-        <label class="block text-xs uppercase letterspace text-gold mb-3">Escolha o crepe ou waffle</label>
-        <div class="space-y-3" id="crepe-options">
-          <button data-price="8.50" data-name="Crepe Nutella e Frutas" class="opt-crepe w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
-            <span>Crepe Nutella e Frutas</span><span class="gold-text">8,50€</span>
-          </button>
-          <button data-price="6.50" data-name="Waffle Nutella com Crocante" class="opt-crepe w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
-            <span>Waffle Nutella com Crocante</span><span class="gold-text">6,50€</span>
-          </button>
-          <button data-price="5.00" data-name="Crepe Ovos Moles com Canela" class="opt-crepe w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
-            <span>Crepe Ovos Moles com Canela</span><span class="gold-text">5,00€</span>
-          </button>
+    <div class="fade-up grid md:grid-cols-5 border border-gold/25">
+      <div class="md:col-span-3 h-[340px] md:h-auto grayscale hover:grayscale-0 transition-all duration-700">
+        <iframe
+          title="Localização da Eiffel Confeitaria Creparia em Carnaxide"
+          class="w-full h-full min-h-[340px] border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Praceta+Infante+Dom+Henrique+1,+2790-085+Carnaxide,+Portugal&output=embed">
+        </iframe>
+      </div>
+      <div class="md:col-span-2 p-8 md:p-10 flex flex-col justify-center gap-8">
+        <div class="flex gap-4">
+          <i data-lucide="map-pin" class="w-5 h-5 gold-text shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-display text-lg mb-1">Morada</h3>
+            <p class="text-cream/60 text-sm leading-relaxed">Praceta Infante Dom Henrique 1<br>2790-085 Carnaxide, Portugal</p>
+          </div>
         </div>
+        <div class="flex gap-4">
+          <i data-lucide="car" class="w-5 h-5 gold-text shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-display text-lg mb-1">Estacionamento</h3>
+            <p class="text-cream/60 text-sm leading-relaxed">Zona residencial de fácil acesso, com lugares na via pública junto à praceta.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <i data-lucide="bus" class="w-5 h-5 gold-text shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-display text-lg mb-1">Transportes</h3>
+            <p class="text-cream/60 text-sm leading-relaxed">A poucos minutos a pé do centro de Carnaxide e das principais paragens de autocarro.</p>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=Praceta+Infante+Dom+Henrique+1,+2790-085+Carnaxide,+Portugal" target="_blank" rel="noopener"
+           class="mt-2 inline-flex items-center justify-center gap-2 bg-gold text-noir py-3.5 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">
+          <i data-lucide="navigation" class="w-4 h-4"></i> Obter Direções
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <label class="block text-xs uppercase letterspace text-gold mt-8 mb-3">Escolha a bebida</label>
-        <div class="space-y-3" id="drink-options">
-          <button data-price="0.90" data-name="Café Expresso" class="opt-drink w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
-            <span>Café Expresso</span><span class="gold-text">0,90€</span>
-          </button>
-          <button data-price="4.00" data-name="Milkshake de Chocolate" class="opt-drink w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
-            <span>Milkshake de Chocolate</span><span class="gold-text">4,00€</span>
-          </button>
+<!-- PERGUNTAS FREQUENTES -->
+<section id="faq" class="py-28 px-6 md:px-10 bg-noir-800 border-y border-gold/15 relative overflow-hidden">
+  <div class="noise absolute inset-0"></div>
+  <div class="max-w-3xl mx-auto relative">
+    <div class="text-center mb-16 fade-up">
+      <p class="gold-text text-xs letterspace uppercase mb-4">Informações Úteis</p>
+      <h2 class="font-display text-3xl md:text-5xl">Perguntas Frequentes</h2>
+      <div class="gold-line w-24 mx-auto mt-6"></div>
+    </div>
+
+    <div class="space-y-3 fade-up" id="faq-list">
+      <div class="faq-item border border-gold/20">
+        <button class="faq-trigger w-full flex justify-between items-center gap-4 text-left px-6 py-5">
+          <span class="font-display text-lg">Fazem encomendas para aniversários e eventos?</span>
+          <i data-lucide="plus" class="faq-icon w-5 h-5 gold-text shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-panel px-6 overflow-hidden max-h-0 transition-all duration-300">
+          <p class="text-cream/60 text-sm leading-relaxed pb-5">Sim, aceitamos encomendas de crepes, waffles e tabuleiros de pastelaria para festas e eventos. Recomendamos encomendar com alguns dias de antecedência para garantir disponibilidade.</p>
         </div>
       </div>
 
-      <div class="flex flex-col justify-between">
-        <div>
-          <p class="text-xs uppercase letterspace text-cream/50 mb-4">O seu pedido</p>
-          <div id="order-summary" class="space-y-2 text-sm text-cream/70 min-h-[80px]">
-            <p class="text-cream/35 italic">Selecione as suas opções ao lado.</p>
-          </div>
-          <div class="gold-line w-full my-6"></div>
-          <div class="flex justify-between items-baseline">
-            <span class="text-cream/60 text-sm uppercase letterspace">Total Estimado</span>
-            <span id="order-total" class="font-display text-4xl gold-text">0,00€</span>
-          </div>
+      <div class="faq-item border border-gold/20">
+        <button class="faq-trigger w-full flex justify-between items-center gap-4 text-left px-6 py-5">
+          <span class="font-display text-lg">Têm opções sem glúten ou vegan?</span>
+          <i data-lucide="plus" class="faq-icon w-5 h-5 gold-text shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-panel px-6 overflow-hidden max-h-0 transition-all duration-300">
+          <p class="text-cream/60 text-sm leading-relaxed pb-5">Temos alguma flexibilidade no recheio dos crepes e panquecas. Para alergias ou restrições alimentares específicas, aconselhamos confirmar connosco antes de vir, para garantirmos a opção mais segura para si.</p>
         </div>
-        <div class="flex flex-col gap-3 mt-10">
-          <button id="btn-reservar" class="bg-gold text-noir py-4 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">Simular Reserva de Mesa</button>
-          <button id="btn-takeaway" class="border border-gold text-gold py-4 text-xs uppercase letterspace hover:bg-gold hover:text-noir transition-colors">Simular Encomenda Take Away</button>
+      </div>
+
+      <div class="faq-item border border-gold/20">
+        <button class="faq-trigger w-full flex justify-between items-center gap-4 text-left px-6 py-5">
+          <span class="font-display text-lg">Aceitam pagamento com cartão e MB Way?</span>
+          <i data-lucide="plus" class="faq-icon w-5 h-5 gold-text shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-panel px-6 overflow-hidden max-h-0 transition-all duration-300">
+          <p class="text-cream/60 text-sm leading-relaxed pb-5">Sim, aceitamos dinheiro, cartão e MB Way, para que o pagamento seja sempre simples e rápido.</p>
         </div>
-        <p id="confirm-msg" class="text-center text-sm gold-text mt-4 hidden"></p>
+      </div>
+
+      <div class="faq-item border border-gold/20">
+        <button class="faq-trigger w-full flex justify-between items-center gap-4 text-left px-6 py-5">
+          <span class="font-display text-lg">Posso levar os doces para take away?</span>
+          <i data-lucide="plus" class="faq-icon w-5 h-5 gold-text shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-panel px-6 overflow-hidden max-h-0 transition-all duration-300">
+          <p class="text-cream/60 text-sm leading-relaxed pb-5">Sim, todo o nosso menu está disponível para take away, incluindo crepes, waffles, pastelaria fina e café para levar.</p>
+        </div>
+      </div>
+
+      <div class="faq-item border border-gold/20">
+        <button class="faq-trigger w-full flex justify-between items-center gap-4 text-left px-6 py-5">
+          <span class="font-display text-lg">Há wifi disponível no espaço?</span>
+          <i data-lucide="plus" class="faq-icon w-5 h-5 gold-text shrink-0 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-panel px-6 overflow-hidden max-h-0 transition-all duration-300">
+          <p class="text-cream/60 text-sm leading-relaxed pb-5">Sim, dispomos de wifi gratuito para clientes, ideal para uma pausa a trabalhar ou para conversar com calma.</p>
+        </div>
       </div>
     </div>
+
+    <p class="text-center text-cream/30 text-xs mt-10 fade-up">Respostas de exemplo para apresentação. A confirmar e ajustar com a Eiffel Confeitaria Creparia antes da publicação final.</p>
   </div>
 </section>
 
@@ -407,56 +466,21 @@ tailwind.config = {
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
 
-  // Simulador
-  let selectedCrepe = null;
-  let selectedDrink = null;
-
-  function updateSummary() {
-    const summary = document.getElementById('order-summary');
-    const totalEl = document.getElementById('order-total');
-    let total = 0;
-    let lines = [];
-
-    if (selectedCrepe) { total += selectedCrepe.price; lines.push(`<div class="flex justify-between"><span>${selectedCrepe.name}</span><span>${selectedCrepe.price.toFixed(2).replace('.', ',')}€</span></div>`); }
-    if (selectedDrink) { total += selectedDrink.price; lines.push(`<div class="flex justify-between"><span>${selectedDrink.name}</span><span>${selectedDrink.price.toFixed(2).replace('.', ',')}€</span></div>`); }
-
-    summary.innerHTML = lines.length ? lines.join('') : '<p class="text-cream/35 italic">Selecione as suas opções ao lado.</p>';
-    totalEl.textContent = total.toFixed(2).replace('.', ',') + '€';
-  }
-
-  document.querySelectorAll('.opt-crepe').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.opt-crepe').forEach(b => b.classList.remove('border-gold', 'bg-gold/10'));
-      btn.classList.add('border-gold', 'bg-gold/10');
-      selectedCrepe = { price: parseFloat(btn.dataset.price), name: btn.dataset.name };
-      updateSummary();
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const trigger = item.querySelector('.faq-trigger');
+    const panel = item.querySelector('.faq-panel');
+    const icon = item.querySelector('.faq-icon');
+    trigger.addEventListener('click', () => {
+      const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-panel').forEach(p => p.style.maxHeight = '0px');
+      document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
+      if (!isOpen) {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        icon.style.transform = 'rotate(45deg)';
+      }
     });
   });
-
-  document.querySelectorAll('.opt-drink').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.opt-drink').forEach(b => b.classList.remove('border-gold', 'bg-gold/10'));
-      btn.classList.add('border-gold', 'bg-gold/10');
-      selectedDrink = { price: parseFloat(btn.dataset.price), name: btn.dataset.name };
-      updateSummary();
-    });
-  });
-
-  function handleConfirm(type) {
-    const msg = document.getElementById('confirm-msg');
-    if (!selectedCrepe && !selectedDrink) {
-      msg.textContent = 'Selecione pelo menos um item antes de continuar.';
-      msg.classList.remove('hidden');
-      return;
-    }
-    msg.textContent = type === 'reserva'
-      ? 'Pedido de reserva simulado com sucesso. Em breve, este botão poderá ligar diretamente ao sistema de reservas real.'
-      : 'Encomenda take away simulada com sucesso. Em breve, este botão poderá ligar diretamente ao sistema de encomendas real.';
-    msg.classList.remove('hidden');
-  }
-
-  document.getElementById('btn-reservar').addEventListener('click', () => handleConfirm('reserva'));
-  document.getElementById('btn-takeaway').addEventListener('click', () => handleConfirm('takeaway'));
 </script>
 </body>
 </html>
