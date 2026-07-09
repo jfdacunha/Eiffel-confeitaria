@@ -64,10 +64,75 @@ tailwind.config = {
     content:''; position:absolute; left:0; bottom:-4px; width:0; height:1px; background:#c6a35d;
     transition: width .35s ease;
   }
-  #navlinks a:hover::after { width:100%; }
+  #navlinks a:hover::after, #navlinks a.active::after { width:100%; }
+  #navlinks a.active { color:#c6a35d; }
+
+  /* Header shrink on scroll */
+  header.scrolled { padding-top:0; padding-bottom:0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.6); }
+  header.scrolled nav { padding-top:.65rem; padding-bottom:.65rem; }
+
+  /* Scroll progress bar */
+  #progress-bar { transition: width .1s ease-out; }
+
+  /* Staggered reveal */
+  .stagger > *:nth-child(1){ transition-delay: 0ms; }
+  .stagger > *:nth-child(2){ transition-delay: 120ms; }
+  .stagger > *:nth-child(3){ transition-delay: 240ms; }
+  .stagger > *:nth-child(4){ transition-delay: 360ms; }
+  .stagger > *:nth-child(5){ transition-delay: 480ms; }
+  .stagger > *:nth-child(6){ transition-delay: 600ms; }
+
+  /* Marquee ticker */
+  .ticker-track { animation: ticker 32s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker { from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+
+  /* Gallery marquee */
+  .gallery-track { animation: gallery-scroll 42s linear infinite; }
+  .gallery-track:hover { animation-play-state: paused; }
+  @keyframes gallery-scroll { from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+
+  /* Shine sweep buttons */
+  .btn-shine { position:relative; overflow:hidden; }
+  .btn-shine::before {
+    content:''; position:absolute; top:0; left:-80%; width:45%; height:100%;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform:skewX(-18deg); transition:left .65s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-shine:hover::before { left:130%; }
+
+  /* Cursor glow */
+  #cursor-glow {
+    position:fixed; top:0; left:0; width:340px; height:340px; border-radius:9999px;
+    background: radial-gradient(circle, rgba(198,163,93,0.16) 0%, transparent 70%);
+    transform: translate(-9999px,-9999px);
+    pointer-events:none; z-index:1; filter: blur(4px);
+    transition: transform .12s ease-out;
+  }
+
+  /* Timeline connector for experiencia */
+  #experiencia { position:relative; }
+  #experiencia::before {
+    content:''; position:absolute; left:21.5px; top:22px; bottom:22px; width:1px;
+    background: linear-gradient(180deg, rgba(198,163,93,0.6), rgba(198,163,93,0.1));
+  }
+
+  /* Menu card lift */
+  .menu-card { transition: transform .5s ease, box-shadow .5s ease; }
+  .menu-card:hover { transform: translateY(-6px); box-shadow: 0 25px 50px -20px rgba(198,163,93,0.25); }
+
+  /* Stat card hover */
+  .stat-block { transition: transform .4s ease; }
+  .stat-block:hover { transform: translateY(-4px); }
+
+  /* Hero parallax layer */
+  #hero-img { transition: transform .05s linear; will-change: transform; }
 </style>
 </head>
 <body class="text-cream antialiased">
+
+<div id="progress-bar" class="fixed top-0 left-0 h-[3px] bg-gold z-[70]" style="width:0%"></div>
+<div id="cursor-glow" class="hidden md:block"></div>
 
 <a href="#menu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-gold focus:text-noir focus:px-4 focus:py-2 focus:z-[100]">Saltar para o menu</a>
 
@@ -79,12 +144,12 @@ tailwind.config = {
       <span class="hidden sm:block font-display text-lg tracking-wide text-cream">Eiffel <span class="gold-text">Confeitaria</span></span>
     </a>
     <div id="navlinks" class="hidden md:flex items-center gap-10 font-body text-sm letterspace uppercase text-cream/80">
-      <a href="#menu" class="hover:text-gold transition-colors">Menu</a>
-      <a href="#sobre" class="hover:text-gold transition-colors">Sobre Nós</a>
-      <a href="#experiencia" class="hover:text-gold transition-colors">Experiência</a>
-      <a href="#reservar" class="hover:text-gold transition-colors">Como Chegar</a>
-      <a href="#faq" class="hover:text-gold transition-colors">FAQ</a>
-      <a href="#contactos" class="hover:text-gold transition-colors">Contactos</a>
+      <a href="#menu" data-section="menu" class="hover:text-gold transition-colors">Menu</a>
+      <a href="#sobre" data-section="sobre" class="hover:text-gold transition-colors">Sobre Nós</a>
+      <a href="#experiencia" data-section="experiencia" class="hover:text-gold transition-colors">Experiência</a>
+      <a href="#reservar" data-section="reservar" class="hover:text-gold transition-colors">Como Chegar</a>
+      <a href="#faq" data-section="faq" class="hover:text-gold transition-colors">FAQ</a>
+      <a href="#contactos" data-section="contactos" class="hover:text-gold transition-colors">Contactos</a>
     </div>
     <a href="#menu" class="border border-gold text-gold px-5 py-2.5 text-xs uppercase letterspace hover:bg-gold hover:text-noir transition-all duration-300">
       Ver Menu
@@ -95,12 +160,12 @@ tailwind.config = {
 <!-- HERO -->
 <section class="relative min-h-screen flex items-end md:items-center overflow-hidden">
   <div class="absolute inset-0">
-    <img src="images/waffle-frutos-vermelhos.jpg" alt="Waffle artesanal com frutos vermelhos e chantilly servido na Eiffel Confeitaria Creparia em Carnaxide" class="w-full h-full object-cover">
+    <img id="hero-img" src="images/waffle-frutos-vermelhos.jpg" alt="Waffle artesanal com frutos vermelhos e chantilly servido na Eiffel Confeitaria Creparia em Carnaxide" class="w-full h-full object-cover scale-110">
     <div class="absolute inset-0 bg-gradient-to-t from-noir via-noir/85 to-noir/40"></div>
     <div class="absolute inset-0 bg-noir/20"></div>
   </div>
   <div class="relative noise"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 pt-40 md:pt-0 w-full">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 pt-40 md:pt-0 w-full stagger">
     <p class="fade-up gold-text text-xs md:text-sm letterspace uppercase mb-6">Carnaxide · Confeitaria &amp; Creparia</p>
     <h1 class="fade-up font-display text-4xl sm:text-5xl md:text-7xl leading-[1.08] max-w-3xl">
       Momentos doces e artesanais<br class="hidden md:block"> no coração de <span class="gold-text">Carnaxide</span>
@@ -109,7 +174,7 @@ tailwind.config = {
       A melhor creparia artesanal e pastelaria fina da região, onde cada crepe, waffle e doce é feito com ingredientes frescos e fabrico próprio diário.
     </p>
     <div class="fade-up flex flex-wrap gap-4 mt-10">
-      <a href="#menu" class="bg-gold text-noir px-8 py-3.5 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">Ver Menu Completo</a>
+      <a href="#menu" class="btn-shine bg-gold text-noir px-8 py-3.5 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">Ver Menu Completo</a>
       <a href="#reservar" class="border border-cream/40 text-cream px-8 py-3.5 text-xs uppercase letterspace hover:border-gold hover:text-gold transition-colors">Como Chegar</a>
     </div>
   </div>
@@ -119,22 +184,44 @@ tailwind.config = {
   </div>
 </section>
 
+<!-- TICKER -->
+<div class="ticker-wrap border-y border-gold/15 bg-noir-800 py-4 overflow-hidden">
+  <div class="ticker-track flex gap-16 whitespace-nowrap w-max">
+    <span class="flex gap-16 items-center text-xs uppercase letterspace text-cream/50">
+      <span>Creparia Artesanal</span><span class="divider-dot inline-block"></span>
+      <span>Waffles Premium</span><span class="divider-dot inline-block"></span>
+      <span>Pastelaria Fina</span><span class="divider-dot inline-block"></span>
+      <span>Fabrico Próprio Diário</span><span class="divider-dot inline-block"></span>
+      <span>Confeitaria em Carnaxide</span><span class="divider-dot inline-block"></span>
+      <span>Cafetaria &amp; Lanches</span><span class="divider-dot inline-block"></span>
+    </span>
+    <span class="flex gap-16 items-center text-xs uppercase letterspace text-cream/50">
+      <span>Creparia Artesanal</span><span class="divider-dot inline-block"></span>
+      <span>Waffles Premium</span><span class="divider-dot inline-block"></span>
+      <span>Pastelaria Fina</span><span class="divider-dot inline-block"></span>
+      <span>Fabrico Próprio Diário</span><span class="divider-dot inline-block"></span>
+      <span>Confeitaria em Carnaxide</span><span class="divider-dot inline-block"></span>
+      <span>Cafetaria &amp; Lanches</span><span class="divider-dot inline-block"></span>
+    </span>
+  </div>
+</div>
+
 <!-- INTRO / STATS STRIP -->
 <section class="border-y border-gold/15 bg-noir-800 py-10">
-  <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-    <div class="fade-up">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center stagger">
+    <div class="fade-up stat-block">
       <p class="stat-num text-3xl gold-text">100%</p>
       <p class="text-xs uppercase letterspace text-cream/60 mt-2">Fabrico Próprio</p>
     </div>
-    <div class="fade-up">
+    <div class="fade-up stat-block">
       <p class="stat-num text-3xl gold-text">Diário</p>
       <p class="text-xs uppercase letterspace text-cream/60 mt-2">Pastelaria Fresca</p>
     </div>
-    <div class="fade-up">
+    <div class="fade-up stat-block">
       <p class="stat-num text-3xl gold-text">Carnaxide</p>
       <p class="text-xs uppercase letterspace text-cream/60 mt-2">Coração da Vila</p>
     </div>
-    <div class="fade-up">
+    <div class="fade-up stat-block">
       <p class="stat-num text-3xl gold-text">Take Away</p>
       <p class="text-xs uppercase letterspace text-cream/60 mt-2">&amp; Sala Acolhedora</p>
     </div>
@@ -153,7 +240,7 @@ tailwind.config = {
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-10">
+    <div class="grid md:grid-cols-3 gap-10 stagger">
       <!-- Crepes -->
       <div class="fade-up menu-card p-8">
         <div class="overflow-hidden mb-6">
@@ -265,7 +352,7 @@ tailwind.config = {
       <p class="text-cream/60 leading-relaxed mb-10">
         No coração de Carnaxide, a Eiffel Confeitaria Creparia nasceu para trazer um pedaço de Paris à vila. Entre aromas de café acabado de tirar e crepes preparados na hora, criámos um espaço pensado para desacelerar, saborear e voltar sempre.
       </p>
-      <div id="experiencia" class="space-y-7">
+      <div id="experiencia" class="space-y-7 stagger">
         <div class="flex gap-5 items-start">
           <div class="w-11 h-11 border border-gold flex items-center justify-center shrink-0 mt-1">
             <i data-lucide="wheat" class="w-5 h-5 gold-text"></i>
@@ -293,6 +380,34 @@ tailwind.config = {
             <p class="text-cream/55 text-sm leading-relaxed">Pastelaria fina preparada todas as manhãs, do pastel de nata aos croissants recheados.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="py-20 bg-noir overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 text-center mb-12 fade-up">
+    <p class="gold-text text-xs letterspace uppercase mb-4">Instantes Eiffel</p>
+    <h2 class="font-display text-3xl md:text-4xl">Direto da Nossa Cozinha</h2>
+  </div>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 w-24 md:w-40 bg-gradient-to-r from-noir to-transparent z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-24 md:w-40 bg-gradient-to-l from-noir to-transparent z-10"></div>
+    <div class="gallery-track flex gap-6 w-max">
+      <div class="flex gap-6">
+        <img src="images/waffle-frutos-vermelhos.jpg" alt="Waffle com frutos vermelhos e chantilly da Eiffel Confeitaria Creparia em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/waffle-nutella-crunch.jpg" alt="Waffle com Nutella e crocante da creparia artesanal Eiffel em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/panquecas-nutella.jpg" alt="Panquecas com chocolate da pastelaria fina Eiffel em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/waffle-frutas.jpg" alt="Waffle com banana e mirtilos da Eiffel Confeitaria em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/interior.jpg" alt="Interior acolhedor da Eiffel Confeitaria Creparia em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+      </div>
+      <div class="flex gap-6">
+        <img src="images/waffle-frutos-vermelhos.jpg" alt="Waffle com frutos vermelhos e chantilly da Eiffel Confeitaria Creparia em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/waffle-nutella-crunch.jpg" alt="Waffle com Nutella e crocante da creparia artesanal Eiffel em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/panquecas-nutella.jpg" alt="Panquecas com chocolate da pastelaria fina Eiffel em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/waffle-frutas.jpg" alt="Waffle com banana e mirtilos da Eiffel Confeitaria em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
+        <img src="images/interior.jpg" alt="Interior acolhedor da Eiffel Confeitaria Creparia em Carnaxide" class="h-64 w-52 object-cover border border-gold/20 hover:border-gold/60 transition-colors">
       </div>
     </div>
   </div>
@@ -358,7 +473,7 @@ tailwind.config = {
       <div class="gold-line w-24 mx-auto mt-6"></div>
     </div>
 
-    <div class="space-y-3 fade-up" id="faq-list">
+    <div class="space-y-3 fade-up stagger" id="faq-list">
       <div class="faq-item border border-gold/20">
         <button class="faq-trigger w-full flex justify-between items-center gap-4 text-left px-6 py-5">
           <span class="font-display text-lg">Fazem encomendas para aniversários e eventos?</span>
@@ -465,6 +580,44 @@ tailwind.config = {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.15 });
   revealEls.forEach(el => io.observe(el));
+
+  // Scroll progress bar + header shrink
+  const progressBar = document.getElementById('progress-bar');
+  const header = document.getElementById('topo');
+  const heroImg = document.getElementById('hero-img');
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = (doc.scrollTop) / (doc.scrollHeight - doc.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+    header.classList.toggle('scrolled', doc.scrollTop > 40);
+    if (heroImg) {
+      const y = Math.min(doc.scrollTop * 0.25, 120);
+      heroImg.style.transform = `translateY(${y}px) scale(1.1)`;
+    }
+  }, { passive: true });
+
+  // Cursor glow (desktop only)
+  const glow = document.getElementById('cursor-glow');
+  if (glow && window.matchMedia('(hover: hover)').matches) {
+    window.addEventListener('mousemove', (e) => {
+      glow.style.transform = `translate(${e.clientX - 170}px, ${e.clientY - 170}px)`;
+    });
+  }
+
+  // Nav scroll-spy
+  const navLinks = document.querySelectorAll('#navlinks a[data-section]');
+  const sections = Array.from(navLinks).map(a => document.getElementById(a.dataset.section)).filter(Boolean);
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector(`#navlinks a[data-section="${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  sections.forEach(s => spy.observe(s));
 
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
