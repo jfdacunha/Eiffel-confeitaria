@@ -101,15 +101,6 @@ tailwind.config = {
   }
   .btn-shine:hover::before { left:130%; }
 
-  /* Cursor glow */
-  #cursor-glow {
-    position:fixed; top:0; left:0; width:340px; height:340px; border-radius:9999px;
-    background: radial-gradient(circle, rgba(198,163,93,0.16) 0%, transparent 70%);
-    transform: translate(-9999px,-9999px);
-    pointer-events:none; z-index:1; filter: blur(4px);
-    transition: transform .12s ease-out;
-  }
-
   /* Timeline connector for experiencia */
   #experiencia { position:relative; }
   #experiencia::before {
@@ -132,7 +123,6 @@ tailwind.config = {
 <body class="text-cream antialiased">
 
 <div id="progress-bar" class="fixed top-0 left-0 h-[3px] bg-gold z-[70]" style="width:0%"></div>
-<div id="cursor-glow" class="hidden md:block"></div>
 
 <a href="#menu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-gold focus:text-noir focus:px-4 focus:py-2 focus:z-[100]">Saltar para o menu</a>
 
@@ -158,14 +148,14 @@ tailwind.config = {
 </header>
 
 <!-- HERO -->
-<section class="relative min-h-screen flex items-end md:items-center overflow-hidden">
+<section class="relative min-h-screen flex items-center overflow-hidden pt-24 md:pt-28">
   <div class="absolute inset-0">
     <img id="hero-img" src="images/waffle-frutos-vermelhos.jpg" alt="Waffle artesanal com frutos vermelhos e chantilly servido na Eiffel Confeitaria Creparia em Carnaxide" class="w-full h-full object-cover scale-110">
     <div class="absolute inset-0 bg-gradient-to-t from-noir via-noir/85 to-noir/40"></div>
     <div class="absolute inset-0 bg-noir/20"></div>
   </div>
   <div class="relative noise"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 pt-40 md:pt-0 w-full stagger">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full stagger">
     <p class="fade-up gold-text text-xs md:text-sm letterspace uppercase mb-6">Carnaxide · Confeitaria &amp; Creparia</p>
     <h1 class="fade-up font-display text-4xl sm:text-5xl md:text-7xl leading-[1.08] max-w-3xl">
       Momentos doces e artesanais<br class="hidden md:block"> no coração de <span class="gold-text">Carnaxide</span>
@@ -595,14 +585,6 @@ tailwind.config = {
       heroImg.style.transform = `translateY(${y}px) scale(1.1)`;
     }
   }, { passive: true });
-
-  // Cursor glow (desktop only)
-  const glow = document.getElementById('cursor-glow');
-  if (glow && window.matchMedia('(hover: hover)').matches) {
-    window.addEventListener('mousemove', (e) => {
-      glow.style.transform = `translate(${e.clientX - 170}px, ${e.clientY - 170}px)`;
-    });
-  }
 
   // Nav scroll-spy
   const navLinks = document.querySelectorAll('#navlinks a[data-section]');
