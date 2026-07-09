@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eiffel Confeitaria Creparia | Crepes e Pastelaria Artesanal em Carnaxide</title>
+<meta name="description" content="Confeitaria em Carnaxide especializada em creparia artesanal, waffles premium e pastelaria fina. Descubra a Eiffel Carnaxide, a cafetaria e lanches com fabrico próprio diário.">
+<meta name="keywords" content="confeitaria em Carnaxide, creparia artesanal, melhores crepes e waffles, pastelaria fina Carnaxide, cafetaria e lanches, Eiffel Carnaxide">
+<meta property="og:title" content="Eiffel Confeitaria Creparia | Carnaxide">
+<meta property="og:description" content="Crepes, waffles e pastelaria artesanal no coração de Carnaxide.">
+<meta property="og:type" content="restaurant">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        noir: { DEFAULT:'#0a0906', 900:'#0a0906', 800:'#121009', 700:'#1a160e' },
+        gold: { DEFAULT:'#c6a35d', light:'#e3cd9a', dark:'#8a6d33', muted:'#9c8354' },
+        cream: '#f4ede1'
+      },
+      fontFamily: {
+        display: ['Marcellus','serif'],
+        script: ['Cormorant Garamond','serif'],
+        body: ['Manrope','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background:#0a0906; font-family:'Manrope',sans-serif; }
+  .gold-text { color:#c6a35d; }
+  .gold-line { background: linear-gradient(90deg, transparent, #c6a35d, transparent); height:1px; }
+  .gold-border { border-color:#c6a35d; }
+  .fade-up { opacity:0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+  .fade-up.in { opacity:1; transform: translateY(0); }
+  .noise::before {
+    content:'';
+    position:absolute; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    pointer-events:none;
+  }
+  .menu-card { position:relative; }
+  .menu-card::after {
+    content:''; position:absolute; inset:0; border:1px solid rgba(198,163,93,0.25); pointer-events:none;
+    transition: border-color .4s ease;
+  }
+  .menu-card:hover::after { border-color: rgba(198,163,93,0.7); }
+  .divider-dot { width:5px; height:5px; border-radius:50%; background:#c6a35d; }
+  ::selection { background:#c6a35d; color:#0a0906; }
+  .scrollbar-slim::-webkit-scrollbar{ height:6px; }
+  .scrollbar-slim::-webkit-scrollbar-thumb{ background:#c6a35d; border-radius:4px; }
+  .letterspace { letter-spacing:0.28em; }
+  .stat-num { font-family:'Marcellus',serif; }
+  #navlinks a { position:relative; }
+  #navlinks a::after {
+    content:''; position:absolute; left:0; bottom:-4px; width:0; height:1px; background:#c6a35d;
+    transition: width .35s ease;
+  }
+  #navlinks a:hover::after { width:100%; }
+</style>
+</head>
+<body class="text-cream antialiased">
+
+<a href="#menu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-gold focus:text-noir focus:px-4 focus:py-2 focus:z-[100]">Saltar para o menu</a>
+
+<!-- HEADER -->
+<header id="topo" class="fixed top-0 left-0 right-0 z-50 bg-noir/90 backdrop-blur-md border-b border-gold/15">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4">
+    <a href="#topo" class="flex items-center gap-3">
+      <img src="images/logo.png" alt="Logótipo Eiffel Confeitaria Creparia em Carnaxide" class="h-10 w-auto">
+      <span class="hidden sm:block font-display text-lg tracking-wide text-cream">Eiffel <span class="gold-text">Confeitaria</span></span>
+    </a>
+    <div id="navlinks" class="hidden md:flex items-center gap-10 font-body text-sm letterspace uppercase text-cream/80">
+      <a href="#menu" class="hover:text-gold transition-colors">Menu</a>
+      <a href="#sobre" class="hover:text-gold transition-colors">Sobre Nós</a>
+      <a href="#experiencia" class="hover:text-gold transition-colors">Experiência</a>
+      <a href="#reservar" class="hover:text-gold transition-colors">Reservar</a>
+      <a href="#contactos" class="hover:text-gold transition-colors">Contactos</a>
+    </div>
+    <a href="#reservar" class="border border-gold text-gold px-5 py-2.5 text-xs uppercase letterspace hover:bg-gold hover:text-noir transition-all duration-300">
+      Ver Menu / Reservar
+    </a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-end md:items-center overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="images/waffle-frutos-vermelhos.jpg" alt="Waffle artesanal com frutos vermelhos e chantilly servido na Eiffel Confeitaria Creparia em Carnaxide" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-t from-noir via-noir/85 to-noir/40"></div>
+    <div class="absolute inset-0 bg-noir/20"></div>
+  </div>
+  <div class="relative noise"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 pt-40 md:pt-0 w-full">
+    <p class="fade-up gold-text text-xs md:text-sm letterspace uppercase mb-6">Carnaxide · Confeitaria &amp; Creparia</p>
+    <h1 class="fade-up font-display text-4xl sm:text-5xl md:text-7xl leading-[1.08] max-w-3xl">
+      Momentos doces e artesanais<br class="hidden md:block"> no coração de <span class="gold-text">Carnaxide</span>
+    </h1>
+    <p class="fade-up font-script italic text-xl md:text-2xl text-cream/75 mt-6 max-w-xl">
+      A melhor creparia artesanal e pastelaria fina da região, onde cada crepe, waffle e doce é feito com ingredientes frescos e fabrico próprio diário.
+    </p>
+    <div class="fade-up flex flex-wrap gap-4 mt-10">
+      <a href="#menu" class="bg-gold text-noir px-8 py-3.5 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">Ver Menu Completo</a>
+      <a href="#reservar" class="border border-cream/40 text-cream px-8 py-3.5 text-xs uppercase letterspace hover:border-gold hover:text-gold transition-colors">Simular Pedido</a>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-cream/50 z-10">
+    <span class="text-[10px] uppercase letterspace">Descubra</span>
+    <div class="w-px h-10 bg-gradient-to-b from-gold to-transparent"></div>
+  </div>
+</section>
+
+<!-- INTRO / STATS STRIP -->
+<section class="border-y border-gold/15 bg-noir-800 py-10">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="fade-up">
+      <p class="stat-num text-3xl gold-text">100%</p>
+      <p class="text-xs uppercase letterspace text-cream/60 mt-2">Fabrico Próprio</p>
+    </div>
+    <div class="fade-up">
+      <p class="stat-num text-3xl gold-text">Diário</p>
+      <p class="text-xs uppercase letterspace text-cream/60 mt-2">Pastelaria Fresca</p>
+    </div>
+    <div class="fade-up">
+      <p class="stat-num text-3xl gold-text">Carnaxide</p>
+      <p class="text-xs uppercase letterspace text-cream/60 mt-2">Coração da Vila</p>
+    </div>
+    <div class="fade-up">
+      <p class="stat-num text-3xl gold-text">Take Away</p>
+      <p class="text-xs uppercase letterspace text-cream/60 mt-2">&amp; Sala Acolhedora</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="py-28 px-6 md:px-10 bg-noir">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-20 fade-up">
+      <p class="gold-text text-xs letterspace uppercase mb-4">Destaques do Menu</p>
+      <h2 class="font-display text-3xl md:text-5xl">Os Melhores Crepes e Waffles de Carnaxide</h2>
+      <div class="gold-line w-24 mx-auto mt-6"></div>
+      <p class="text-cream/60 mt-6 leading-relaxed">
+        Da pastelaria fina aos crepes recheados na hora, cada item da nossa cafetaria e lanches nasce de receitas próprias, pensadas para adoçar o seu dia em Carnaxide.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      <!-- Crepes -->
+      <div class="fade-up menu-card p-8">
+        <div class="overflow-hidden mb-6">
+          <img src="images/waffle-frutas.jpg" alt="Waffle artesanal com banana e mirtilos frescos, exemplo de crepes doces da Eiffel Confeitaria em Carnaxide" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700">
+        </div>
+        <h3 class="font-display text-2xl gold-text mb-1">Crepes Doces &amp; Salgados</h3>
+        <p class="text-cream/50 text-sm mb-6">Recheados na hora, ao seu gosto</p>
+        <ul class="space-y-4 text-sm">
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Crepe Nutella e Frutas da Época</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">8,50€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Crepe Banoffee, Caramelo e Chantily</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">8,50€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Crepe Ovos Moles com Canela</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">5,00€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Crepe Fiambre e Queijo</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">6,50€</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Waffles -->
+      <div class="fade-up menu-card p-8 md:-translate-y-6">
+        <div class="overflow-hidden mb-6">
+          <img src="images/waffle-nutella-crunch.jpg" alt="Waffle premium coberto com chocolate e crocante, especialidade da creparia artesanal Eiffel em Carnaxide" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700">
+        </div>
+        <h3 class="font-display text-2xl gold-text mb-1">Waffles Premium</h3>
+        <p class="text-cream/50 text-sm mb-6">Crocantes por fora, fofos por dentro</p>
+        <ul class="space-y-4 text-sm">
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Waffle Nutella com Crocante</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">6,50€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Waffle Salada de Frutas Frescas</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">8,50€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Waffle Banoffee</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">5,80€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Waffle Simples</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">3,50€</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pastelaria -->
+      <div class="fade-up menu-card p-8">
+        <div class="overflow-hidden mb-6">
+          <img src="images/panquecas-nutella.jpg" alt="Panquecas artesanais com chocolate, pastelaria fina da Eiffel Confeitaria Creparia em Carnaxide" class="w-full h-56 object-cover hover:scale-105 transition-transform duration-700">
+        </div>
+        <h3 class="font-display text-2xl gold-text mb-1">Pastelaria Fina &amp; Cafetaria</h3>
+        <p class="text-cream/50 text-sm mb-6">Fabrico próprio, todos os dias</p>
+        <ul class="space-y-4 text-sm">
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Pastel de Nata Artesanal</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">1,30€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Pack Pastel de Nata (6 un.)</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">6,50€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Croissant com Creme de Avelã e Fruta</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">3,80€</span>
+          </li>
+          <li class="flex justify-between items-baseline gap-3">
+            <span>Café Expresso Cremoso</span>
+            <span class="flex-1 border-b border-dotted border-cream/20 mb-1"></span>
+            <span class="gold-text">0,90€</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-center text-cream/35 text-xs mt-14 fade-up">Menu de exemplo para apresentação. Preços finais a confirmar com a Eiffel Confeitaria Creparia.</p>
+  </div>
+</section>
+
+<!-- SOBRE / EXPERIENCIA -->
+<section id="sobre" class="py-28 px-6 md:px-10 bg-noir-800 border-y border-gold/15 relative overflow-hidden">
+  <div class="noise absolute inset-0"></div>
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative">
+    <div class="fade-up">
+      <img src="images/interior.jpg" alt="Interior acolhedor e sofisticado da Eiffel Confeitaria Creparia em Carnaxide" class="w-full h-[520px] object-cover">
+    </div>
+    <div class="fade-up">
+      <p class="gold-text text-xs letterspace uppercase mb-4">Sobre Nós</p>
+      <h2 class="font-display text-3xl md:text-5xl leading-tight mb-6">A Experiência <span class="gold-text">Eiffel</span></h2>
+      <p class="text-cream/60 leading-relaxed mb-10">
+        No coração de Carnaxide, a Eiffel Confeitaria Creparia nasceu para trazer um pedaço de Paris à vila. Entre aromas de café acabado de tirar e crepes preparados na hora, criámos um espaço pensado para desacelerar, saborear e voltar sempre.
+      </p>
+      <div id="experiencia" class="space-y-7">
+        <div class="flex gap-5 items-start">
+          <div class="w-11 h-11 border border-gold flex items-center justify-center shrink-0 mt-1">
+            <i data-lucide="wheat" class="w-5 h-5 gold-text"></i>
+          </div>
+          <div>
+            <h3 class="font-display text-lg mb-1">Ingredientes Frescos e Artesanais</h3>
+            <p class="text-cream/55 text-sm leading-relaxed">Selecionamos diariamente frutas da época e produtos de qualidade para cada crepe e waffle.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 items-start">
+          <div class="w-11 h-11 border border-gold flex items-center justify-center shrink-0 mt-1">
+            <i data-lucide="sofa" class="w-5 h-5 gold-text"></i>
+          </div>
+          <div>
+            <h3 class="font-display text-lg mb-1">Ambiente Acolhedor e Requintado</h3>
+            <p class="text-cream/55 text-sm leading-relaxed">Um espaço em madeira clara e tons naturais, pensado para pausas tranquilas em Carnaxide.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 items-start">
+          <div class="w-11 h-11 border border-gold flex items-center justify-center shrink-0 mt-1">
+            <i data-lucide="chef-hat" class="w-5 h-5 gold-text"></i>
+          </div>
+          <div>
+            <h3 class="font-display text-lg mb-1">Fabrico Próprio Diário</h3>
+            <p class="text-cream/55 text-sm leading-relaxed">Pastelaria fina preparada todas as manhãs, do pastel de nata aos croissants recheados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULADOR -->
+<section id="reservar" class="py-28 px-6 md:px-10 bg-noir">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="gold-text text-xs letterspace uppercase mb-4">Simulador Interativo</p>
+      <h2 class="font-display text-3xl md:text-5xl">Monte o Seu Lanche</h2>
+      <div class="gold-line w-24 mx-auto mt-6"></div>
+      <p class="text-cream/60 mt-6">Escolha um crepe e uma bebida e veja o valor estimado antes de reservar mesa ou encomendar para take away.</p>
+    </div>
+
+    <div class="fade-up border border-gold/25 p-8 md:p-12 grid md:grid-cols-2 gap-12">
+      <div>
+        <label class="block text-xs uppercase letterspace text-gold mb-3">Escolha o crepe ou waffle</label>
+        <div class="space-y-3" id="crepe-options">
+          <button data-price="8.50" data-name="Crepe Nutella e Frutas" class="opt-crepe w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
+            <span>Crepe Nutella e Frutas</span><span class="gold-text">8,50€</span>
+          </button>
+          <button data-price="6.50" data-name="Waffle Nutella com Crocante" class="opt-crepe w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
+            <span>Waffle Nutella com Crocante</span><span class="gold-text">6,50€</span>
+          </button>
+          <button data-price="5.00" data-name="Crepe Ovos Moles com Canela" class="opt-crepe w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
+            <span>Crepe Ovos Moles com Canela</span><span class="gold-text">5,00€</span>
+          </button>
+        </div>
+
+        <label class="block text-xs uppercase letterspace text-gold mt-8 mb-3">Escolha a bebida</label>
+        <div class="space-y-3" id="drink-options">
+          <button data-price="0.90" data-name="Café Expresso" class="opt-drink w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
+            <span>Café Expresso</span><span class="gold-text">0,90€</span>
+          </button>
+          <button data-price="4.00" data-name="Milkshake de Chocolate" class="opt-drink w-full text-left px-5 py-4 border border-cream/20 hover:border-gold transition-colors flex justify-between items-center">
+            <span>Milkshake de Chocolate</span><span class="gold-text">4,00€</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-between">
+        <div>
+          <p class="text-xs uppercase letterspace text-cream/50 mb-4">O seu pedido</p>
+          <div id="order-summary" class="space-y-2 text-sm text-cream/70 min-h-[80px]">
+            <p class="text-cream/35 italic">Selecione as suas opções ao lado.</p>
+          </div>
+          <div class="gold-line w-full my-6"></div>
+          <div class="flex justify-between items-baseline">
+            <span class="text-cream/60 text-sm uppercase letterspace">Total Estimado</span>
+            <span id="order-total" class="font-display text-4xl gold-text">0,00€</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-3 mt-10">
+          <button id="btn-reservar" class="bg-gold text-noir py-4 text-xs uppercase letterspace font-medium hover:bg-gold-light transition-colors">Simular Reserva de Mesa</button>
+          <button id="btn-takeaway" class="border border-gold text-gold py-4 text-xs uppercase letterspace hover:bg-gold hover:text-noir transition-colors">Simular Encomenda Take Away</button>
+        </div>
+        <p id="confirm-msg" class="text-center text-sm gold-text mt-4 hidden"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contactos" class="bg-noir-800 border-t border-gold/15 pt-20 pb-8 px-6 md:px-10 relative overflow-hidden">
+  <div class="noise absolute inset-0"></div>
+  <div class="max-w-7xl mx-auto relative">
+    <div class="grid md:grid-cols-4 gap-12 pb-16">
+      <div>
+        <img src="images/logo.png" alt="Eiffel Confeitaria Creparia Carnaxide" class="h-14 w-auto mb-5">
+        <p class="text-cream/50 text-sm leading-relaxed">A sua confeitaria em Carnaxide para crepes, waffles e pastelaria fina, todos os dias.</p>
+      </div>
+      <div>
+        <h4 class="font-display text-lg gold-text mb-5">Localização</h4>
+        <p class="text-cream/55 text-sm leading-relaxed flex gap-3">
+          <i data-lucide="map-pin" class="w-4 h-4 gold-text shrink-0 mt-0.5"></i>
+          Praceta Infante Dom Henrique 1<br>2790-085 Carnaxide, Portugal
+        </p>
+      </div>
+      <div>
+        <h4 class="font-display text-lg gold-text mb-5">Horário</h4>
+        <ul class="text-cream/55 text-sm space-y-2">
+          <li class="flex justify-between gap-6"><span>Segunda a Sexta</span><span>a confirmar</span></li>
+          <li class="flex justify-between gap-6"><span>Sábado</span><span>a confirmar</span></li>
+          <li class="flex justify-between gap-6"><span>Domingo</span><span>a confirmar</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-display text-lg gold-text mb-5">Contacto</h4>
+        <ul class="text-cream/55 text-sm space-y-3">
+          <li class="flex gap-3 items-center"><i data-lucide="phone" class="w-4 h-4 gold-text"></i>telefone a confirmar</li>
+          <li class="flex gap-3 items-center"><i data-lucide="mail" class="w-4 h-4 gold-text"></i>email a confirmar</li>
+        </ul>
+        <div class="flex gap-4 mt-6">
+          <a href="https://www.instagram.com/eiffelcarnaxide/" target="_blank" rel="noopener" aria-label="Instagram Eiffel Confeitaria Creparia" class="w-10 h-10 border border-gold/40 flex items-center justify-center hover:bg-gold hover:text-noir gold-text transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+          <a href="#" aria-label="Facebook Eiffel Confeitaria Creparia" class="w-10 h-10 border border-gold/40 flex items-center justify-center hover:bg-gold hover:text-noir gold-text transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="gold-line w-full mb-8"></div>
+    <p class="text-center text-cream/30 text-xs">Eiffel Confeitaria &amp; Creparia · Carnaxide · Protótipo desenvolvido para apresentação comercial</p>
+    <p class="text-center text-cream/20 text-[11px] mt-3">Morada e Instagram confirmados online. Telefone, email e horário a confirmar diretamente com o estabelecimento.</p>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Simulador
+  let selectedCrepe = null;
+  let selectedDrink = null;
+
+  function updateSummary() {
+    const summary = document.getElementById('order-summary');
+    const totalEl = document.getElementById('order-total');
+    let total = 0;
+    let lines = [];
+
+    if (selectedCrepe) { total += selectedCrepe.price; lines.push(`<div class="flex justify-between"><span>${selectedCrepe.name}</span><span>${selectedCrepe.price.toFixed(2).replace('.', ',')}€</span></div>`); }
+    if (selectedDrink) { total += selectedDrink.price; lines.push(`<div class="flex justify-between"><span>${selectedDrink.name}</span><span>${selectedDrink.price.toFixed(2).replace('.', ',')}€</span></div>`); }
+
+    summary.innerHTML = lines.length ? lines.join('') : '<p class="text-cream/35 italic">Selecione as suas opções ao lado.</p>';
+    totalEl.textContent = total.toFixed(2).replace('.', ',') + '€';
+  }
+
+  document.querySelectorAll('.opt-crepe').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.opt-crepe').forEach(b => b.classList.remove('border-gold', 'bg-gold/10'));
+      btn.classList.add('border-gold', 'bg-gold/10');
+      selectedCrepe = { price: parseFloat(btn.dataset.price), name: btn.dataset.name };
+      updateSummary();
+    });
+  });
+
+  document.querySelectorAll('.opt-drink').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.opt-drink').forEach(b => b.classList.remove('border-gold', 'bg-gold/10'));
+      btn.classList.add('border-gold', 'bg-gold/10');
+      selectedDrink = { price: parseFloat(btn.dataset.price), name: btn.dataset.name };
+      updateSummary();
+    });
+  });
+
+  function handleConfirm(type) {
+    const msg = document.getElementById('confirm-msg');
+    if (!selectedCrepe && !selectedDrink) {
+      msg.textContent = 'Selecione pelo menos um item antes de continuar.';
+      msg.classList.remove('hidden');
+      return;
+    }
+    msg.textContent = type === 'reserva'
+      ? 'Pedido de reserva simulado com sucesso. Em breve, este botão poderá ligar diretamente ao sistema de reservas real.'
+      : 'Encomenda take away simulada com sucesso. Em breve, este botão poderá ligar diretamente ao sistema de encomendas real.';
+    msg.classList.remove('hidden');
+  }
+
+  document.getElementById('btn-reservar').addEventListener('click', () => handleConfirm('reserva'));
+  document.getElementById('btn-takeaway').addEventListener('click', () => handleConfirm('takeaway'));
+</script>
+</body>
+</html>
